@@ -37,7 +37,7 @@ enum planck_layers {
   _LAYER6,
 };
 
-#define KEY_PRESS_DELAY 1
+#define KEY_PRESS_DELAY 10
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
