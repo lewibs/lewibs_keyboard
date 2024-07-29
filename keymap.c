@@ -244,7 +244,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_14:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_F) SS_TAP(X_U) SS_TAP(X_N) SS_TAP(X_C) SS_TAP(X_T) SS_TAP(X_I) SS_TAP(X_O) SS_TAP(X_N));
+      SEND_STRING("function");
     }
     break;
     case ST_MACRO_15:
