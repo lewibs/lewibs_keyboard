@@ -2,6 +2,18 @@
 - use this with qmk wsl.
 - all I need are the maps so I got rid of everything except the readme
 
+compile script
+```bash
+qmk compile -kb planck/ez/glow -km lewibs_keyboard
+```
+
+move the bin to the git dir
+```bash
+mv ~/qmk_firmware/planck_ez_glow_lewibs_keyboard.bin  ~/qmk_firmware/keyboards/planck/keymaps/lewibs_keyboard/lewibs_keyboard.bin
+```
+
+Use this in a QMK_WSL container to compile for planck
+https://github.com/zsa/qmk_firmware
 
 # Building your layout from source
 
