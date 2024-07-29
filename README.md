@@ -1,3 +1,8 @@
+# Notes from lewibs
+- use this with qmk wsl.
+- all I need are the maps so I got rid of everything except the readme
+
+
 # Building your layout from source
 
 Congratulations on taking the next step, and making use of your keyboard's open-source nature! There's so much power to unlock — this is going to be fun. :)
