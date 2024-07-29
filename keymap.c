@@ -37,7 +37,7 @@ enum planck_layers {
   _LAYER6,
 };
 
-#define KEY_PRESS_DELAY 30
+#define KEY_PRESS_DELAY 50
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
@@ -174,77 +174,77 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case ST_MACRO_0:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_F) SS_TAP(X_O) SS_TAP(X_R));
+      SEND_STRING_DELAY("for", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_1:
     if (record->event.pressed) {
-      SEND_STRING(SS_LSFT(SS_TAP(X_E)) SS_TAP(X_A) SS_TAP(X_C) SS_TAP(X_H));
+      SEND_STRING_DELAY("each",  KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_2:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_M) SS_TAP(X_A) SS_TAP(X_P));
+      SEND_STRING_DELAY("map", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_3:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_F) SS_TAP(X_I) SS_TAP(X_L) SS_TAP(X_T) SS_TAP(X_E) SS_TAP(X_R));
+      SEND_STRING_DELAY("filter", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_4:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_S) SS_TAP(X_T) SS_TAP(X_R) SS_TAP(X_U) SS_TAP(X_C) SS_TAP(X_T));
+      SEND_STRING_DELAY("struct", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_5:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_W) SS_TAP(X_H) SS_TAP(X_I) SS_TAP(X_L) SS_TAP(X_E));
+      SEND_STRING_DELAY("while", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_6:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_E) SS_TAP(X_L) SS_TAP(X_S) SS_TAP(X_E) SS_TAP(X_SPACE));
+      SEND_STRING_DELAY("else", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_7:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_I) SS_TAP(X_F));
+      SEND_STRING_DELAY("if", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_8:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_T) SS_TAP(X_R) SS_TAP(X_Y));
+      SEND_STRING_DELAY("try", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_9:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_C) SS_TAP(X_A) SS_TAP(X_T) SS_TAP(X_C) SS_TAP(X_H));
+      SEND_STRING_DELAY("catch", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_10:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_G) SS_TAP(X_E) SS_TAP(X_T));
+      SEND_STRING_DELAY("get", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_11:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_C) SS_TAP(X_L) SS_TAP(X_A) SS_TAP(X_S) SS_TAP(X_S));
+      SEND_STRING_DELAY("class", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_12:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_T) SS_TAP(X_H) SS_TAP(X_I) SS_TAP(X_S) SS_TAP(X_DOT));
+      SEND_STRING_DELAY("this.", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_13:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_S) SS_TAP(X_E) SS_TAP(X_L) SS_TAP(X_F) SS_TAP(X_DOT));
+      SEND_STRING_DELAY("self.", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_14:
     if (record->event.pressed) {
-      SEND_STRING("function");
+      SEND_STRING_DELAY("function", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_15:
