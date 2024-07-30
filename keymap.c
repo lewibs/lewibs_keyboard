@@ -4,8 +4,7 @@
 #endif
 #include "eeprom.h"
 
-
-enum planck_keycodes {
+typedef enum {
   RGB_SLD = SAFE_RANGE,
   FOR_MACRO,
   EACH_MACRO,
@@ -24,10 +23,9 @@ enum planck_keycodes {
   FUNCTION_MACRO,
   NEXT_WORD_LEFT_MACRO,
   NEXT_WORD_RIGHT_MACRO,
-};
+} planck_keycodes;
 
-
-enum planck_layers {
+typedef enum {
   _BASE,
   _LOWER,
   _RAISE,
@@ -35,11 +33,40 @@ enum planck_layers {
   _LAYER4,
   _LAYER5,
   _LAYER6,
-};
+} planck_layers;
 
+#define ROWS 4
+#define COLS 12
 #define KEY_PRESS_DELAY 40
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
+
+#define COLOR_NEUTRAL {0,0,255}
+
+typedef struct {
+  char id[50];
+  uint16_t keycode;
+  uint8_t color[3];
+} Key;
+
+typedef struct {
+  char id[50];
+  planck_layers layer;
+  Key keymap[ROWS][COLS];
+} Layer;
+
+Key Q = {
+  .id = "Q",
+  .keycode = KC_Q,
+  .color = COLOR_NEUTRAL
+};
+
+Key W = {
+  .id = "W",
+  .keycode = KC_W,
+  .color = COLOR_NEUTRAL
+};
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_planck_grid(
