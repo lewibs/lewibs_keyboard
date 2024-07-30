@@ -174,77 +174,77 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case ST_MACRO_0:
     if (record->event.pressed) {
-      SEND_STRING_DELAY("for", KEY_PRESS_DELAY);
+      SEND_STRING("for");
     }
     break;
     case ST_MACRO_1:
     if (record->event.pressed) {
-      SEND_STRING_DELAY("each",  KEY_PRESS_DELAY);
+      SEND_STRING("each");
     }
     break;
     case ST_MACRO_2:
     if (record->event.pressed) {
-      SEND_STRING_DELAY("map", KEY_PRESS_DELAY);
+      SEND_STRING("map");
     }
     break;
     case ST_MACRO_3:
     if (record->event.pressed) {
-      SEND_STRING_DELAY("filter", KEY_PRESS_DELAY);
+      SEND_STRING("filter");
     }
     break;
     case ST_MACRO_4:
     if (record->event.pressed) {
-      SEND_STRING_DELAY("struct", KEY_PRESS_DELAY);
+      SEND_STRING("struct");
     }
     break;
     case ST_MACRO_5:
     if (record->event.pressed) {
-      SEND_STRING_DELAY("while", KEY_PRESS_DELAY);
+      SEND_STRING("while");
     }
     break;
     case ST_MACRO_6:
     if (record->event.pressed) {
-      SEND_STRING_DELAY("else", KEY_PRESS_DELAY);
+      SEND_STRING("else");
     }
     break;
     case ST_MACRO_7:
     if (record->event.pressed) {
-      SEND_STRING_DELAY("if", KEY_PRESS_DELAY);
+      SEND_STRING("if");
     }
     break;
     case ST_MACRO_8:
     if (record->event.pressed) {
-      SEND_STRING_DELAY("try", KEY_PRESS_DELAY);
+      SEND_STRING("try");
     }
     break;
     case ST_MACRO_9:
     if (record->event.pressed) {
-      SEND_STRING_DELAY("catch", KEY_PRESS_DELAY);
+      SEND_STRING("catch");
     }
     break;
     case ST_MACRO_10:
     if (record->event.pressed) {
-      SEND_STRING_DELAY("get", KEY_PRESS_DELAY);
+      SEND_STRING("get");
     }
     break;
     case ST_MACRO_11:
     if (record->event.pressed) {
-      SEND_STRING_DELAY("class", KEY_PRESS_DELAY);
+      SEND_STRING("class");
     }
     break;
     case ST_MACRO_12:
     if (record->event.pressed) {
-      SEND_STRING_DELAY("this.", KEY_PRESS_DELAY);
+      SEND_STRING("this.");
     }
     break;
     case ST_MACRO_13:
     if (record->event.pressed) {
-      SEND_STRING_DELAY("self.", KEY_PRESS_DELAY);
+      SEND_STRING("self.");
     }
     break;
     case ST_MACRO_14:
     if (record->event.pressed) {
-      SEND_STRING_DELAY("function", KEY_PRESS_DELAY);
+      SEND_STRING("function");
     }
     break;
     case ST_MACRO_15:
