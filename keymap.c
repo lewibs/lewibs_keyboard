@@ -37,7 +37,7 @@ enum planck_layers {
   _LAYER6,
 };
 
-#define KEY_PRESS_DELAY 0
+#define KEY_PRESS_DELAY 30
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
@@ -136,7 +136,7 @@ void set_layer_color(int layer) {
 }
 
 bool rgb_matrix_indicators_user(void) {
-  if (false) {
+  if (true) {
       return false;
   }
   if (keyboard_config.disable_layer_led) { return false; }
@@ -174,77 +174,77 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case ST_MACRO_0:
     if (record->event.pressed) {
-      SEND_STRING("for");
+      SEND_STRING_DELAY("for", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_1:
     if (record->event.pressed) {
-      SEND_STRING("each");
+      SEND_STRING_DELAY("each",  KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_2:
     if (record->event.pressed) {
-      SEND_STRING("map");
+      SEND_STRING_DELAY("map", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_3:
     if (record->event.pressed) {
-      SEND_STRING("filter");
+      SEND_STRING_DELAY("filter", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_4:
     if (record->event.pressed) {
-      SEND_STRING("struct");
+      SEND_STRING_DELAY("struct", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_5:
     if (record->event.pressed) {
-      SEND_STRING("while");
+      SEND_STRING_DELAY("while", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_6:
     if (record->event.pressed) {
-      SEND_STRING("else");
+      SEND_STRING_DELAY("else", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_7:
     if (record->event.pressed) {
-      SEND_STRING("if");
+      SEND_STRING_DELAY("if", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_8:
     if (record->event.pressed) {
-      SEND_STRING("try");
+      SEND_STRING_DELAY("try", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_9:
     if (record->event.pressed) {
-      SEND_STRING("catch");
+      SEND_STRING_DELAY("catch", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_10:
     if (record->event.pressed) {
-      SEND_STRING("get");
+      SEND_STRING_DELAY("get", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_11:
     if (record->event.pressed) {
-      SEND_STRING("class");
+      SEND_STRING_DELAY("class", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_12:
     if (record->event.pressed) {
-      SEND_STRING("this.");
+      SEND_STRING_DELAY("this.", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_13:
     if (record->event.pressed) {
-      SEND_STRING("self.");
+      SEND_STRING_DELAY("self.", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_14:
     if (record->event.pressed) {
-      SEND_STRING("function");
+      SEND_STRING_DELAY("function", KEY_PRESS_DELAY);
     }
     break;
     case ST_MACRO_15:
@@ -259,7 +259,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
 
     case RGB_SLD:
-        if (false) {
+        if (true) {
             return false;
         }
         if (record->event.pressed) {
