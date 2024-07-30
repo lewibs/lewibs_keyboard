@@ -5,9 +5,10 @@
 // uint8_t keymap_layer_count(void);
 // uint16_t keycode_at_keymap_location(uint8_t layer_num, uint8_t row, uint8_t column);
 
+extern rgb_config_t rgb_matrix_config;
+
 enum keycodes {
-  RGB_SLD = SAFE_RANGE,
-  FOR_MACRO,
+  FOR_MACRO = SAFE_RANGE,
   EACH_MACRO,
   MAP_MACRO,
   FILTER_MACRO,
@@ -49,9 +50,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_LOWER] = LAYOUT_planck_grid(
-    FOR_MACRO,     EACH_MACRO,     MAP_MACRO,     FILTER_MACRO,     STRUCT_MACRO,     KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_EXLM,        KC_LCBR,        KC_RCBR,        KC_AT,          
-    WHILE_MACRO,     ELSE_MACRO,     IF_MACRO,     TRY_MACRO,     CATCH_MACRO,     KC_GRAVE,       KC_TRANSPARENT, KC_NO,          KC_HASH,        KC_LPRN,        KC_RPRN,        KC_DLR,         
-    GET_MACRO,    CLASS_MACRO,    THIS_MACRO,    SELF_MACRO,    FUNCTION_MACRO,    LALT(LCTL(KC_T)),KC_TRANSPARENT, KC_NO,          KC_PIPE,        KC_LBRC,        KC_RBRC,        KC_AMPR,        
+    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_EXLM,        KC_LCBR,        KC_RCBR,        KC_AT,          
+    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_GRAVE,       KC_TRANSPARENT, KC_NO,          KC_HASH,        KC_LPRN,        KC_RPRN,        KC_DLR,         
+    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    LALT(LCTL(KC_T)),KC_TRANSPARENT, KC_NO,          KC_PIPE,        KC_LBRC,        KC_RBRC,        KC_AMPR,        
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
 
@@ -89,14 +90,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          DM_PLY1,        DM_PLY2,        KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
-
 };
 
-extern rgb_config_t rgb_matrix_config;
-
-// void keyboard_post_init_user(void) {
-//   rgb_matrix_enable();
-// }
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [_BASE] = { {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,255,255}, {0,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {214,224,185}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {214,224,185}, {214,224,185}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {41,255,255}, {41,255,255}, {23,251,254}, {41,255,255}, {23,251,254}, {0,0,255}, {23,251,254}, {23,251,254}, {23,251,254}, {41,255,255}, {41,255,255} },
@@ -112,7 +107,6 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [_LAYER5] = { {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {36,226,249}, {36,226,249}, {86,255,255}, {86,255,255}, {0,0,0}, {0,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {23,251,254}, {23,251,254}, {172,255,255}, {172,255,255}, {86,255,255}, {41,255,255}, {41,255,255}, {23,251,254}, {41,255,255}, {23,251,254}, {0,0,0}, {23,251,254}, {23,251,254}, {23,251,254}, {41,255,255}, {41,255,255} },
 
     [_LAYER6] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {172,255,255}, {172,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,255,255}, {0,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {86,255,255}, {86,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {41,255,255}, {41,255,255}, {23,251,254}, {41,255,255}, {23,251,254}, {0,0,0}, {23,251,254}, {23,251,254}, {23,251,254}, {41,255,255}, {41,255,255} },
-
 };
 
 void set_layer_color(int layer) {
@@ -138,9 +132,9 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-uint8_t layer_state_set_user(uint8_t state) {
-  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
-}
+// uint8_t layer_state_set_user(uint8_t state) {
+//   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+// }
 
 
 
