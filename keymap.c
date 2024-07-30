@@ -137,9 +137,21 @@ void set_layer_color(int layer) {
 
 bool rgb_matrix_indicators_user(void) {
   if (keyboard_config.disable_layer_led) { return false; }
-  
-  set_layer_color(layer_state);
-
+  switch (biton32(layer_state)) {
+    case _BASE:
+    case _LOWER:
+    case _RAISE:
+    case _ADJUST:
+    case _LAYER4:
+    case _LAYER5:
+    case _LAYER6:
+      set_layer_color(biton32(layer_state));
+      break;
+   default:
+    if (rgb_matrix_get_flags() == LED_FLAG_NONE)
+      rgb_matrix_set_color_all(0, 0, 0);
+    break;
+  }
   return true;
 }
 
