@@ -6,7 +6,7 @@
 
 
 enum planck_keycodes {
-  RGB_SLD = EZ_SAFE_RANGE,
+  RGB_SLD = SAFE_RANGE,
   ST_MACRO_0,
   ST_MACRO_1,
   ST_MACRO_2,
@@ -136,7 +136,7 @@ void set_layer_color(int layer) {
 }
 
 bool rgb_matrix_indicators_user(void) {
-  if (rawhid_state.rgb_control) {
+  if (true) {
       return false;
   }
   if (keyboard_config.disable_layer_led) { return false; }
@@ -259,7 +259,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
 
     case RGB_SLD:
-        if (rawhid_state.rgb_control) {
+        if (true) {
             return false;
         }
         if (record->event.pressed) {
