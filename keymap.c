@@ -7,23 +7,23 @@
 
 enum planck_keycodes {
   RGB_SLD = SAFE_RANGE,
-  ST_MACRO_0,
-  ST_MACRO_1,
-  ST_MACRO_2,
-  ST_MACRO_3,
-  ST_MACRO_4,
-  ST_MACRO_5,
-  ST_MACRO_6,
-  ST_MACRO_7,
-  ST_MACRO_8,
-  ST_MACRO_9,
-  ST_MACRO_10,
-  ST_MACRO_11,
-  ST_MACRO_12,
-  ST_MACRO_13,
-  ST_MACRO_14,
-  ST_MACRO_15,
-  ST_MACRO_16,
+  FOR_MACRO,
+  EACH_MACRO,
+  MAP_MACRO,
+  FILTER_MACRO,
+  STRUCT_MACRO,
+  WHILE_MACRO,
+  ELSE_MACRO,
+  IF_MACRO,
+  TRY_MACRO,
+  CATCH_MACRO,
+  GET_MACRO,
+  CLASS_MACRO,
+  THIS_MACRO,
+  SELF_MACRO,
+  FUNCTION_MACRO,
+  NEXT_WORD_LEFT_MACRO,
+  NEXT_WORD_RIGHT_MACRO,
 };
 
 
@@ -37,7 +37,7 @@ enum planck_layers {
   _LAYER6,
 };
 
-#define KEY_PRESS_DELAY 0
+#define KEY_PRESS_DELAY 40
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
@@ -50,9 +50,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_LOWER] = LAYOUT_planck_grid(
-    ST_MACRO_0,     ST_MACRO_1,     ST_MACRO_2,     ST_MACRO_3,     ST_MACRO_4,     KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_EXLM,        KC_LCBR,        KC_RCBR,        KC_AT,          
-    ST_MACRO_5,     ST_MACRO_6,     ST_MACRO_7,     ST_MACRO_8,     ST_MACRO_9,     KC_GRAVE,       KC_TRANSPARENT, KC_NO,          KC_HASH,        KC_LPRN,        KC_RPRN,        KC_DLR,         
-    ST_MACRO_10,    ST_MACRO_11,    ST_MACRO_12,    ST_MACRO_13,    ST_MACRO_14,    LALT(LCTL(KC_T)),KC_TRANSPARENT, KC_NO,          KC_PIPE,        KC_LBRC,        KC_RBRC,        KC_AMPR,        
+    FOR_MACRO,     EACH_MACRO,     MAP_MACRO,     FILTER_MACRO,     STRUCT_MACRO,     KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_EXLM,        KC_LCBR,        KC_RCBR,        KC_AT,          
+    WHILE_MACRO,     ELSE_MACRO,     IF_MACRO,     TRY_MACRO,     CATCH_MACRO,     KC_GRAVE,       KC_TRANSPARENT, KC_NO,          KC_HASH,        KC_LPRN,        KC_RPRN,        KC_DLR,         
+    GET_MACRO,    CLASS_MACRO,    THIS_MACRO,    SELF_MACRO,    FUNCTION_MACRO,    LALT(LCTL(KC_T)),KC_TRANSPARENT, KC_NO,          KC_PIPE,        KC_LBRC,        KC_RBRC,        KC_AMPR,        
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
 
@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LAYER4] = LAYOUT_planck_grid(
     KC_NO,          KC_MS_BTN2,     KC_MS_UP,       KC_MS_BTN1,     KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_ENTER,       KC_UP,          KC_NO,          KC_NO,          
-    KC_NO,          KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    KC_NO,          KC_NO,          KC_TRANSPARENT, ST_MACRO_15,    KC_LEFT,        KC_DOWN,        KC_RIGHT,       ST_MACRO_16,    
+    KC_NO,          KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    KC_NO,          KC_NO,          KC_TRANSPARENT, NEXT_WORD_LEFT_MACRO,    KC_LEFT,        KC_DOWN,        KC_RIGHT,       NEXT_WORD_RIGHT_MACRO,    
     KC_MS_WH_LEFT,  KC_MS_WH_UP,    KC_MS_BTN3,     KC_MS_WH_DOWN,  KC_MS_WH_RIGHT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          MT(MOD_LALT, KC_HOME),KC_NO,          KC_END,         KC_NO,          
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
@@ -136,9 +136,6 @@ void set_layer_color(int layer) {
 }
 
 bool rgb_matrix_indicators_user(void) {
-  if (false) {
-      return false;
-  }
   if (keyboard_config.disable_layer_led) { return false; }
   switch (biton32(layer_state)) {
     case 0:
@@ -172,96 +169,93 @@ bool rgb_matrix_indicators_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case ST_MACRO_0:
+    case FOR_MACRO:
     if (record->event.pressed) {
       SEND_STRING_DELAY("for", KEY_PRESS_DELAY);
     }
     break;
-    case ST_MACRO_1:
+    case EACH_MACRO:
     if (record->event.pressed) {
       SEND_STRING_DELAY("each",  KEY_PRESS_DELAY);
     }
     break;
-    case ST_MACRO_2:
+    case MAP_MACRO:
     if (record->event.pressed) {
       SEND_STRING_DELAY("map", KEY_PRESS_DELAY);
     }
     break;
-    case ST_MACRO_3:
+    case FILTER_MACRO:
     if (record->event.pressed) {
       SEND_STRING_DELAY("filter", KEY_PRESS_DELAY);
     }
     break;
-    case ST_MACRO_4:
+    case STRUCT_MACRO:
     if (record->event.pressed) {
       SEND_STRING_DELAY("struct", KEY_PRESS_DELAY);
     }
     break;
-    case ST_MACRO_5:
+    case WHILE_MACRO:
     if (record->event.pressed) {
       SEND_STRING_DELAY("while", KEY_PRESS_DELAY);
     }
     break;
-    case ST_MACRO_6:
+    case ELSE_MACRO:
     if (record->event.pressed) {
       SEND_STRING_DELAY("else", KEY_PRESS_DELAY);
     }
     break;
-    case ST_MACRO_7:
+    case IF_MACRO:
     if (record->event.pressed) {
       SEND_STRING_DELAY("if", KEY_PRESS_DELAY);
     }
     break;
-    case ST_MACRO_8:
+    case TRY_MACRO:
     if (record->event.pressed) {
       SEND_STRING_DELAY("try", KEY_PRESS_DELAY);
     }
     break;
-    case ST_MACRO_9:
+    case CATCH_MACRO:
     if (record->event.pressed) {
       SEND_STRING_DELAY("catch", KEY_PRESS_DELAY);
     }
     break;
-    case ST_MACRO_10:
+    case GET_MACRO:
     if (record->event.pressed) {
       SEND_STRING_DELAY("get", KEY_PRESS_DELAY);
     }
     break;
-    case ST_MACRO_11:
+    case CLASS_MACRO:
     if (record->event.pressed) {
       SEND_STRING_DELAY("class", KEY_PRESS_DELAY);
     }
     break;
-    case ST_MACRO_12:
+    case THIS_MACRO:
     if (record->event.pressed) {
       SEND_STRING_DELAY("this.", KEY_PRESS_DELAY);
     }
     break;
-    case ST_MACRO_13:
+    case SELF_MACRO:
     if (record->event.pressed) {
       SEND_STRING_DELAY("self.", KEY_PRESS_DELAY);
     }
     break;
-    case ST_MACRO_14:
+    case FUNCTION_MACRO:
     if (record->event.pressed) {
       SEND_STRING_DELAY("function", KEY_PRESS_DELAY);
     }
     break;
-    case ST_MACRO_15:
+    case NEXT_WORD_LEFT_MACRO:
     if (record->event.pressed) {
       SEND_STRING(SS_LCTL(SS_TAP(X_LEFT)));
     }
     break;
-    case ST_MACRO_16:
+    case NEXT_WORD_RIGHT_MACRO:
     if (record->event.pressed) {
       SEND_STRING(SS_LCTL(SS_TAP(X_RIGHT)));
     }
     break;
 
     case RGB_SLD:
-        if (false) {
-            return false;
-        }
         if (record->event.pressed) {
             rgblight_mode(1);
         }
