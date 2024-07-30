@@ -4,6 +4,9 @@
 #endif
 #include "eeprom.h"
 
+//NOTE: these can be used for inplace modifications
+// uint8_t keymap_layer_count(void);
+// uint16_t keycode_at_keymap_location(uint8_t layer_num, uint8_t row, uint8_t column);
 
 enum planck_keycodes {
   RGB_SLD = SAFE_RANGE,
