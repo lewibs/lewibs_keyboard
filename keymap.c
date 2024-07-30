@@ -37,7 +37,7 @@ enum planck_layers {
   _LAYER6,
 };
 
-#define KEY_PRESS_DELAY 30
+#define KEY_PRESS_DELAY 0
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
@@ -136,7 +136,7 @@ void set_layer_color(int layer) {
 }
 
 bool rgb_matrix_indicators_user(void) {
-  if (true) {
+  if (false) {
       return false;
   }
   if (keyboard_config.disable_layer_led) { return false; }
@@ -259,7 +259,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
 
     case RGB_SLD:
-        if (true) {
+        if (false) {
             return false;
         }
         if (record->event.pressed) {
