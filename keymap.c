@@ -37,7 +37,6 @@ enum layers {
   _LAYER6,
 };
 
-#define KEY_PRESS_DELAY 40
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
@@ -93,13 +92,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-
-
 extern rgb_config_t rgb_matrix_config;
 
-void keyboard_post_init_user(void) {
-  rgb_matrix_enable();
-}
+// void keyboard_post_init_user(void) {
+//   rgb_matrix_enable();
+// }
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [_BASE] = { {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,255,255}, {0,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {214,224,185}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {214,224,185}, {214,224,185}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {41,255,255}, {41,255,255}, {23,251,254}, {41,255,255}, {23,251,254}, {0,0,255}, {23,251,254}, {23,251,254}, {23,251,254}, {41,255,255}, {41,255,255} },
@@ -140,173 +137,6 @@ bool rgb_matrix_indicators_user(void) {
   set_layer_color(biton32(layer_state));
   return true;
 }
-
-// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//   switch (keycode) {
-//     case FOR_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING_DELAY("for", KEY_PRESS_DELAY);
-//     }
-//     break;
-//     case EACH_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING_DELAY("each",  KEY_PRESS_DELAY);
-//     }
-//     break;
-//     case MAP_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING_DELAY("map", KEY_PRESS_DELAY);
-//     }
-//     break;
-//     case FILTER_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING_DELAY("filter", KEY_PRESS_DELAY);
-//     }
-//     break;
-//     case STRUCT_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING_DELAY("struct", KEY_PRESS_DELAY);
-//     }
-//     break;
-//     case WHILE_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING_DELAY("while", KEY_PRESS_DELAY);
-//     }
-//     break;
-//     case ELSE_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING_DELAY("else", KEY_PRESS_DELAY);
-//     }
-//     break;
-//     case IF_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING_DELAY("if", KEY_PRESS_DELAY);
-//     }
-//     break;
-//     case TRY_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING_DELAY("try", KEY_PRESS_DELAY);
-//     }
-//     break;
-//     case CATCH_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING_DELAY("catch", KEY_PRESS_DELAY);
-//     }
-//     break;
-//     case GET_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING_DELAY("get", KEY_PRESS_DELAY);
-//     }
-//     break;
-//     case CLASS_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING_DELAY("class", KEY_PRESS_DELAY);
-//     }
-//     break;
-//     case THIS_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING_DELAY("this.", KEY_PRESS_DELAY);
-//     }
-//     break;
-//     case SELF_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING_DELAY("self.", KEY_PRESS_DELAY);
-//     }
-//     break;
-//     case FUNCTION_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING_DELAY("function", KEY_PRESS_DELAY);
-//     }
-//     break;
-//     case NEXT_WORD_LEFT_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING(SS_LCTL(SS_TAP(X_LEFT)));
-//     }
-//     break;
-//     case NEXT_WORD_RIGHT_MACRO:
-//     if (record->event.pressed) {
-//       SEND_STRING(SS_LCTL(SS_TAP(X_RIGHT)));
-//     }
-//     break;
-
-//     case RGB_SLD:
-//         if (record->event.pressed) {
-//             rgblight_mode(1);
-//         }
-//         return false;
-//   }
-//   return true;
-// }
-
-// #ifdef AUDIO_ENABLE
-// bool muse_mode = false;
-// uint8_t last_muse_note = 0;
-// uint16_t muse_counter = 0;
-// uint8_t muse_offset = 70;
-// uint16_t muse_tempo = 50;
-
-// void encoder_update(bool clockwise) {
-//     if (muse_mode) {
-//         if (IS_LAYER_ON(_RAISE)) {
-//             if (clockwise) {
-//                 muse_offset++;
-//             } else {
-//                 muse_offset--;
-//             }
-//         } else {
-//             if (clockwise) {
-//                 muse_tempo+=1;
-//             } else {
-//                 muse_tempo-=1;
-//             }
-//         }
-//     } else {
-//         if (clockwise) {
-//         #ifdef MOUSEKEY_ENABLE
-//             register_code(KC_MS_WH_DOWN);
-//             unregister_code(KC_MS_WH_DOWN);
-//         #else
-//             register_code(KC_PGDN);
-//             unregister_code(KC_PGDN);
-//         #endif
-//         } else {
-//         #ifdef MOUSEKEY_ENABLE
-//             register_code(KC_MS_WH_UP);
-//             unregister_code(KC_MS_WH_UP);
-//         #else
-//             register_code(KC_PGUP);
-//             unregister_code(KC_PGUP);
-//         #endif
-//         }
-//     }
-// }
-
-// void matrix_scan_user(void) {
-// #ifdef AUDIO_ENABLE
-//     if (muse_mode) {
-//         if (muse_counter == 0) {
-//             uint8_t muse_note = muse_offset + SCALE[muse_clock_pulse()];
-//             if (muse_note != last_muse_note) {
-//                 stop_note(compute_freq_for_midi_note(last_muse_note));
-//                 play_note(compute_freq_for_midi_note(muse_note), 0xF);
-//                 last_muse_note = muse_note;
-//             }
-//         }
-//         muse_counter = (muse_counter + 1) % muse_tempo;
-//     }
-// #endif
-// }
-
-// bool music_mask_user(uint16_t keycode) {
-//     switch (keycode) {
-//     case RAISE:
-//     case LOWER:
-//         return false;
-//     default:
-//         return true;
-//     }
-// }
-// #endif
 
 uint8_t layer_state_set_user(uint8_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
