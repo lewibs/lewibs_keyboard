@@ -1,7 +1,4 @@
 #include QMK_KEYBOARD_H
-#ifdef AUDIO_ENABLE
-#include "muse.h"
-#endif
 #include "eeprom.h"
 
 //NOTE: these can be used for inplace modifications
@@ -170,102 +167,102 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case FOR_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING_DELAY("for", KEY_PRESS_DELAY);
-    }
-    break;
-    case EACH_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING_DELAY("each",  KEY_PRESS_DELAY);
-    }
-    break;
-    case MAP_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING_DELAY("map", KEY_PRESS_DELAY);
-    }
-    break;
-    case FILTER_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING_DELAY("filter", KEY_PRESS_DELAY);
-    }
-    break;
-    case STRUCT_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING_DELAY("struct", KEY_PRESS_DELAY);
-    }
-    break;
-    case WHILE_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING_DELAY("while", KEY_PRESS_DELAY);
-    }
-    break;
-    case ELSE_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING_DELAY("else", KEY_PRESS_DELAY);
-    }
-    break;
-    case IF_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING_DELAY("if", KEY_PRESS_DELAY);
-    }
-    break;
-    case TRY_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING_DELAY("try", KEY_PRESS_DELAY);
-    }
-    break;
-    case CATCH_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING_DELAY("catch", KEY_PRESS_DELAY);
-    }
-    break;
-    case GET_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING_DELAY("get", KEY_PRESS_DELAY);
-    }
-    break;
-    case CLASS_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING_DELAY("class", KEY_PRESS_DELAY);
-    }
-    break;
-    case THIS_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING_DELAY("this.", KEY_PRESS_DELAY);
-    }
-    break;
-    case SELF_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING_DELAY("self.", KEY_PRESS_DELAY);
-    }
-    break;
-    case FUNCTION_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING_DELAY("function", KEY_PRESS_DELAY);
-    }
-    break;
-    case NEXT_WORD_LEFT_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL(SS_TAP(X_LEFT)));
-    }
-    break;
-    case NEXT_WORD_RIGHT_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL(SS_TAP(X_RIGHT)));
-    }
-    break;
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//   switch (keycode) {
+//     case FOR_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING_DELAY("for", KEY_PRESS_DELAY);
+//     }
+//     break;
+//     case EACH_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING_DELAY("each",  KEY_PRESS_DELAY);
+//     }
+//     break;
+//     case MAP_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING_DELAY("map", KEY_PRESS_DELAY);
+//     }
+//     break;
+//     case FILTER_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING_DELAY("filter", KEY_PRESS_DELAY);
+//     }
+//     break;
+//     case STRUCT_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING_DELAY("struct", KEY_PRESS_DELAY);
+//     }
+//     break;
+//     case WHILE_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING_DELAY("while", KEY_PRESS_DELAY);
+//     }
+//     break;
+//     case ELSE_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING_DELAY("else", KEY_PRESS_DELAY);
+//     }
+//     break;
+//     case IF_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING_DELAY("if", KEY_PRESS_DELAY);
+//     }
+//     break;
+//     case TRY_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING_DELAY("try", KEY_PRESS_DELAY);
+//     }
+//     break;
+//     case CATCH_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING_DELAY("catch", KEY_PRESS_DELAY);
+//     }
+//     break;
+//     case GET_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING_DELAY("get", KEY_PRESS_DELAY);
+//     }
+//     break;
+//     case CLASS_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING_DELAY("class", KEY_PRESS_DELAY);
+//     }
+//     break;
+//     case THIS_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING_DELAY("this.", KEY_PRESS_DELAY);
+//     }
+//     break;
+//     case SELF_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING_DELAY("self.", KEY_PRESS_DELAY);
+//     }
+//     break;
+//     case FUNCTION_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING_DELAY("function", KEY_PRESS_DELAY);
+//     }
+//     break;
+//     case NEXT_WORD_LEFT_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING(SS_LCTL(SS_TAP(X_LEFT)));
+//     }
+//     break;
+//     case NEXT_WORD_RIGHT_MACRO:
+//     if (record->event.pressed) {
+//       SEND_STRING(SS_LCTL(SS_TAP(X_RIGHT)));
+//     }
+//     break;
 
-    case RGB_SLD:
-        if (record->event.pressed) {
-            rgblight_mode(1);
-        }
-        return false;
-  }
-  return true;
-}
+//     case RGB_SLD:
+//         if (record->event.pressed) {
+//             rgblight_mode(1);
+//         }
+//         return false;
+//   }
+//   return true;
+// }
 
 // #ifdef AUDIO_ENABLE
 // bool muse_mode = false;
