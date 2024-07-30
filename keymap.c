@@ -8,7 +8,7 @@
 // uint8_t keymap_layer_count(void);
 // uint16_t keycode_at_keymap_location(uint8_t layer_num, uint8_t row, uint8_t column);
 
-enum planck_keycodes {
+enum keycodes {
   RGB_SLD = SAFE_RANGE,
   FOR_MACRO,
   EACH_MACRO,
@@ -30,7 +30,7 @@ enum planck_keycodes {
 };
 
 
-enum planck_layers {
+enum layers {
   _BASE,
   _LOWER,
   _RAISE,
