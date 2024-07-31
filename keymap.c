@@ -8,108 +8,41 @@
 extern rgb_config_t rgb_matrix_config;
 
 enum keycodes {
-  FOR_MACRO = SAFE_RANGE,
-  EACH_MACRO,
-  MAP_MACRO,
-  FILTER_MACRO,
-  STRUCT_MACRO,
-  WHILE_MACRO,
-  ELSE_MACRO,
-  IF_MACRO,
-  TRY_MACRO,
-  CATCH_MACRO,
-  GET_MACRO,
-  CLASS_MACRO,
-  THIS_MACRO,
-  SELF_MACRO,
-  FUNCTION_MACRO,
-  NEXT_WORD_LEFT_MACRO,
-  NEXT_WORD_RIGHT_MACRO,
+	NO_CODE=SAFE_RANGE
 };
-
 
 enum layers {
-  _BASE,
-  _LOWER,
-  _RAISE,
-  _ADJUST,
-  _LAYER4,
-  _LAYER5,
-  _LAYER6,
+	_BASE,
+	_FN,
+	_MOUSE,
+	_DELETE,
+	_NUMS,
+	_SYMS
 };
-
-#define LOWER MO(_LOWER)
-#define RAISE MO(_RAISE)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_BASE] = LAYOUT_planck_grid(
-    KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_DELETE,      KC_BSPC,        KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           
-    KC_A,           KC_S,           KC_D,           KC_F,           KC_G,           KC_QUOTE,       KC_ENTER,       KC_H,           KC_J,           KC_K,           KC_L,           KC_SCLN,        
-    KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           KC_ESCAPE,      KC_TAB,         KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       
-    KC_LEFT_CTRL,   KC_LEFT_ALT,    MO(5),          KC_LEFT_SHIFT,  LOWER,          KC_SPACE,       KC_NO,          RAISE,          MO(4),          MO(6),          KC_LEFT_GUI,    KC_RIGHT_ALT
-  ),
-
-  [_LOWER] = LAYOUT_planck_grid(
-    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_EXLM,        KC_LCBR,        KC_RCBR,        KC_AT,          
-    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_GRAVE,       KC_TRANSPARENT, KC_NO,          KC_HASH,        KC_LPRN,        KC_RPRN,        KC_DLR,         
-    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    LALT(LCTL(KC_T)),KC_TRANSPARENT, KC_NO,          KC_PIPE,        KC_LBRC,        KC_RBRC,        KC_AMPR,        
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
-  ),
-
-  [_RAISE] = LAYOUT_planck_grid(
-    KC_0,           KC_1,           KC_2,           KC_3,           KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_PERC,        KC_TILD,        KC_BSLS,        KC_NO,          
-    KC_DOT,         KC_4,           KC_5,           KC_6,           KC_NO,          KC_GRAVE,       KC_TRANSPARENT, KC_NO,          KC_MINUS,       KC_PLUS,        KC_SLASH,       KC_ASTR,        
-    KC_EQUAL,       KC_7,           KC_8,           KC_9,           KC_NO,          KC_CALCULATOR,  KC_TRANSPARENT, KC_NO,          KC_NO,          KC_LABK,        KC_RABK,        KC_CIRC,        
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
-  ),
-
-  [_ADJUST] = LAYOUT_planck_grid(
-    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
-    LCTL(LSFT(KC_DELETE)),KC_TAB,         LCTL(KC_DELETE),KC_DELETE,      KC_NO,          KC_NO,          KC_TRANSPARENT, KC_NO,          KC_BSPC,        LCTL(KC_BSPC),  KC_ENTER,       LCTL(LSFT(KC_BSPC)),
-    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
-  ),
-
-  [_LAYER4] = LAYOUT_planck_grid(
-    KC_NO,          KC_MS_BTN2,     KC_MS_UP,       KC_MS_BTN1,     KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_ENTER,       KC_UP,          KC_NO,          KC_NO,          
-    KC_NO,          KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    KC_NO,          KC_NO,          KC_TRANSPARENT, NEXT_WORD_LEFT_MACRO,    KC_LEFT,        KC_DOWN,        KC_RIGHT,       NEXT_WORD_RIGHT_MACRO,    
-    KC_MS_WH_LEFT,  KC_MS_WH_UP,    KC_MS_BTN3,     KC_MS_WH_DOWN,  KC_MS_WH_RIGHT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          MT(MOD_LALT, KC_HOME),KC_NO,          KC_END,         KC_NO,          
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
-  ),
-
-  [_LAYER5] = LAYOUT_planck_grid(
-    KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         KC_F12,         
-    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_NO,          KC_AUDIO_MUTE,  
-    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          AU_TOGG,        MU_TOGG,        KC_MEDIA_REWIND,KC_MEDIA_FAST_FORWARD,KC_MEDIA_PLAY_PAUSE,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
-  ),
-
-  [_LAYER6] = LAYOUT_planck_grid(
-    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          DM_REC1,        DM_REC2,        KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
-    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          DM_RSTP,        DM_RSTP,        KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
-    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          DM_PLY1,        DM_PLY2,        KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
-  ),
+	[_BASE] = LAYOUT_planck_grid(KC_Q,KC_W,KC_E,KC_R,KC_T,KC_DELETE,KC_BSPC,KC_Y,KC_U,KC_I,KC_O,KC_P,KC_A,KC_S,KC_D,KC_F,KC_G,KC_QUOTE,KC_ENTER,KC_H,KC_J,KC_K,KC_L,KC_SCLN,KC_Z,KC_X,KC_C,KC_V,KC_B,KC_ESCAPE,KC_TAB,KC_N,KC_M,KC_COMMA,KC_DOT,KC_SLASH,KC_LEFT_CTRL,KC_LEFT_ALT,MO(_FN),KC_LSFT,MO(_SYMS),KC_SPACE,KC_NO,MO(_NUMS),MO(_MOUSE),KC_NO,KC_LEFT_GUI,KC_LEFT_ALT),
+	[_FN] = LAYOUT_planck_grid(KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,KC_F11,KC_F12,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_NO,KC_AUDIO_MUTE,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_MEDIA_PLAY_PAUSE,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_NO,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT),
+	[_MOUSE] = LAYOUT_planck_grid(KC_NO,KC_MS_BTN2,KC_MS_UP,KC_MS_BTN1,KC_NO,KC_TRANSPARENT,KC_TRANSPARENT,KC_NO,KC_ENTER,KC_UP,KC_NO,KC_NO,KC_NO,KC_MS_LEFT,KC_MS_DOWN,KC_MS_RIGHT,KC_NO,KC_NO,KC_TRANSPARENT,LCTL(KC_LEFT),KC_LEFT,KC_DOWN,KC_RIGHT,RCTL(KC_RIGHT),KC_MS_WH_LEFT,KC_MS_WH_UP,KC_NO,KC_MS_WH_DOWN,KC_MS_WH_RIGHT,KC_TRANSPARENT,KC_TRANSPARENT,KC_NO,KC_HOME,KC_NO,KC_END,KC_NO,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT),
+	[_DELETE] = LAYOUT_planck_grid(KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_TRANSPARENT,KC_TRANSPARENT,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,LCTL(LSFT(KC_DELETE)),KC_TAB,LCTL(KC_DELETE),KC_DELETE,KC_NO,KC_NO,KC_TRANSPARENT,KC_NO,KC_BSPC,LCTL(KC_BSPC),KC_ENTER,LCTL(LSFT(KC_BSPC)),KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_TRANSPARENT,KC_TRANSPARENT,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT),
+	[_NUMS] = LAYOUT_planck_grid(KC_0,KC_1,KC_2,KC_3,KC_NO,KC_TRANSPARENT,KC_TRANSPARENT,KC_NO,KC_PERC,KC_TILD,KC_BSLS,KC_NO,KC_DOT,KC_4,KC_5,KC_6,KC_NO,KC_GRAVE,KC_TRANSPARENT,KC_NO,KC_MINUS,KC_PLUS,KC_SLASH,KC_ASTR,KC_EQUAL,KC_7,KC_8,KC_9,KC_NO,KC_CALCULATOR,KC_TRANSPARENT,KC_NO,KC_NO,KC_LABK,KC_RABK,KC_CIRC,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT),
+	[_SYMS] = LAYOUT_planck_grid(KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_TRANSPARENT,KC_TRANSPARENT,KC_NO,KC_EXLM,KC_LCBR,KC_RCBR,KC_AT,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_GRAVE,KC_TRANSPARENT,KC_NO,KC_HASH,KC_LPRN,KC_RPRN,KC_DLR,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_TRANSPARENT,KC_TRANSPARENT,KC_NO,KC_PIPE,KC_LBRC,KC_RBRC,KC_AMPR,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT)
 };
 
 
-const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-    [_BASE] = { {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,255,255}, {0,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {214,224,185}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {214,224,185}, {214,224,185}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {41,255,255}, {41,255,255}, {23,251,254}, {41,255,255}, {23,251,254}, {0,0,255}, {23,251,254}, {23,251,254}, {23,251,254}, {41,255,255}, {41,255,255} },
-
-    [_LOWER] = { {139,155,185}, {139,155,185}, {139,155,185}, {139,155,185}, {139,155,185}, {0,255,255}, {0,255,255}, {0,0,0}, {0,157,255}, {0,0,255}, {0,0,255}, {162,255,255}, {139,155,185}, {139,155,185}, {139,155,185}, {139,155,185}, {139,155,185}, {0,0,255}, {214,224,185}, {0,0,0}, {162,255,255}, {0,0,255}, {0,0,255}, {70,211,255}, {139,155,185}, {139,155,185}, {139,155,185}, {139,155,185}, {139,155,185}, {85,255,255}, {214,224,185}, {0,0,0}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {41,255,255}, {41,255,255}, {23,251,254}, {41,255,255}, {23,251,254}, {0,0,255}, {23,251,254}, {23,251,254}, {23,251,254}, {41,255,255}, {41,255,255} },
-
-    [_RAISE] = { {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,0}, {0,255,255}, {0,255,255}, {0,0,0}, {142,255,255}, {0,0,255}, {162,255,255}, {0,0,0}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,0}, {0,0,255}, {214,224,185}, {0,0,0}, {0,179,255}, {81,211,255}, {0,179,255}, {81,211,255}, {142,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,0}, {142,255,255}, {214,224,185}, {0,0,0}, {0,0,0}, {0,0,255}, {0,0,255}, {81,211,255}, {41,255,255}, {41,255,255}, {23,251,254}, {41,255,255}, {23,251,254}, {0,0,255}, {23,251,254}, {23,251,254}, {23,251,254}, {41,255,255}, {41,255,255} },
-
-    [_ADJUST] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,255,255}, {0,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,255,255}, {214,224,185}, {0,255,255}, {0,255,255}, {0,0,0}, {0,0,0}, {214,224,185}, {0,0,0}, {0,255,255}, {0,255,255}, {214,224,185}, {0,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {214,224,185}, {214,224,185}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {41,255,255}, {41,255,255}, {23,251,254}, {41,255,255}, {23,251,254}, {0,0,0}, {23,251,254}, {23,251,254}, {23,251,254}, {41,255,255}, {41,255,255} },
-
-    [_LAYER4] = { {0,0,0}, {0,0,255}, {0,153,255}, {32,255,255}, {0,0,0}, {0,255,255}, {0,255,255}, {0,0,0}, {32,255,255}, {0,153,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,153,255}, {0,153,255}, {0,153,255}, {0,0,0}, {0,0,0}, {214,224,185}, {0,153,255}, {0,153,255}, {0,153,255}, {0,153,255}, {0,153,255}, {32,157,255}, {32,157,255}, {32,157,255}, {32,157,255}, {32,157,255}, {214,224,185}, {214,224,185}, {0,0,0}, {0,153,255}, {0,0,0}, {0,153,255}, {0,0,0}, {41,255,255}, {41,255,255}, {23,251,254}, {41,255,255}, {23,251,254}, {0,0,255}, {23,251,254}, {23,251,254}, {23,251,254}, {41,255,255}, {41,255,255} },
-
-    [_LAYER5] = { {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {172,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {36,226,249}, {36,226,249}, {86,255,255}, {86,255,255}, {0,0,0}, {0,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {23,251,254}, {23,251,254}, {172,255,255}, {172,255,255}, {86,255,255}, {41,255,255}, {41,255,255}, {23,251,254}, {41,255,255}, {23,251,254}, {0,0,0}, {23,251,254}, {23,251,254}, {23,251,254}, {41,255,255}, {41,255,255} },
-
-    [_LAYER6] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {172,255,255}, {172,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,255,255}, {0,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {86,255,255}, {86,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {41,255,255}, {41,255,255}, {23,251,254}, {41,255,255}, {23,251,254}, {0,0,0}, {23,251,254}, {23,251,254}, {23,251,254}, {41,255,255}, {41,255,255} },
+const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT+1][3] = {
+	[_BASE] = {{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0}},
+	[_FN] = {{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0}},
+	[_MOUSE] = {{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0}},
+	[_DELETE] = {{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0}},
+	[_NUMS] = {{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0}},
+	[_SYMS] = {{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0}}
 };
 
-void set_layer_color(int layer) {
+//THIS IS NEEDED FOR SETTING THE COLOR BASED ON THE LAYER
+bool rgb_matrix_indicators_user(void) {
+  int layer = biton32(layer_state);
+
   for (int i = 0; i < RGB_MATRIX_LED_COUNT; i++) {
     HSV hsv = {
       .h = pgm_read_byte(&ledmap[layer][i][0]),
@@ -124,17 +57,13 @@ void set_layer_color(int layer) {
         rgb_matrix_set_color( i, f * rgb.r, f * rgb.g, f * rgb.b );
     }
   }
-}
 
-bool rgb_matrix_indicators_user(void) {
-  if (keyboard_config.disable_layer_led) { return false; }
-  set_layer_color(biton32(layer_state));
   return true;
 }
 
-// uint8_t layer_state_set_user(uint8_t state) {
-//   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
-// }
-
-
-
+//THIS IS NEEDED for double layers
+uint8_t layer_state_set_user(uint8_t state) {
+  //TODO figure out how to insert here
+  //return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+  return 0;
+}
