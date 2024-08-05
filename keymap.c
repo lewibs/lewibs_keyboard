@@ -9,12 +9,12 @@ NO_KEY = SAFE_RANGE
 };
 
 enum layers {
+_base,
 _syms,
 _nums,
 _delete,
 _mouse,
-_fn,
-_base
+_fn
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
