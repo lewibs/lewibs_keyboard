@@ -40,6 +40,10 @@ state = update_tri_layer_state(state, _syms, _nums, _delete);
 return state;
 }
 
+void keyboard_post_init_user(void) {
+  rgb_matrix_enable();
+}
+
 bool rgb_matrix_indicators_user(void) {
   int layer = biton32(layer_state);
 
